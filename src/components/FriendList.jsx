@@ -10,7 +10,7 @@ const FriendList = ({ contestName }) => {
 
   const getUserDetail = async (users) => {
     try {
-      const url = "http://localhost:5000/user/getUsers"; // Corrected endpoint URL
+      const url = `${process.env.REACT_APP_BACKEND_URL}/user/getUsers`; // Corrected endpoint URL
       const response = await fetch(url, {
         method: "POST",
         headers: {

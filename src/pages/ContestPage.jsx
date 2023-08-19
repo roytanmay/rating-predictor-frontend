@@ -33,7 +33,7 @@ const ContestPage = () => {
         });
       } else {
         // console.log(userId);
-        const response = await fetch(`http://localhost:5000/user/${userId}`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${userId}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

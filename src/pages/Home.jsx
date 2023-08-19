@@ -7,7 +7,8 @@ const Home = () => {
   const [data, setData] = useState(null);
 
   const getContests = async () => {
-    const response = await fetch("http://localhost:5000/");
+    console.log(process.env.REACT_APP_BACKEND_URL);
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}`);
     const data = await response.json();
     setData(data);
   };
