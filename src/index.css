@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+
+body {
+  font-family: "Abel", sans-serif;
+  /* width: 100%;
+  height: 100%; */
+   
+  background-color: #1f2937;
+}
+
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
