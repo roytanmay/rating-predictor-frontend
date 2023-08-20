@@ -59,7 +59,7 @@ const FriendList = ({ trigger, contestName }) => {
       // const bValue = b[columnName];
       // console.log(columnName);
       if (a === null || b === null) {
-        return 0;
+        return b === null;
       }
 
       const aValue = a[columnName];
