@@ -199,6 +199,8 @@ const FriendList = ({ contestName }) => {
                 : null}
             </tbody>
           </table>
+        ) : users.length === 0 ? (
+          <h1 style={{ color: "white" }}>You have no friends added</h1>
         ) : (
           <Spinner />
         )}
