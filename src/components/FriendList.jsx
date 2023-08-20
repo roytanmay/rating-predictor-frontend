@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import "./contestlist.css";
 import Spinner from "./Spinner";
 
-const FriendList = ({ contestName }) => {
-  const users = JSON.parse(localStorage.getItem("lc_users")) || [];
+const FriendList = ({ trigger, contestName }) => {
+  // const users = JSON.parse(localStorage.getItem("lc_users")) || [];
+  const [users, setUsers] = useState([]);
   const [data, setData] = useState([]);
   const [sortBy, setSortBy] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
@@ -39,8 +40,14 @@ const FriendList = ({ contestName }) => {
   };
 
   useEffect(() => {
+    setUsers(JSON.parse(localStorage.getItem("lc_users")) || []);
+    // getUserDetail(users);
+    console.log(users);
+  }, [trigger]);
+
+  useEffect(() => {
     getUserDetail(users);
-  }, []);
+  }, [users]);
 
   const handleSort = (columnName) => {
     // Toggle sort direction if clicking the same column

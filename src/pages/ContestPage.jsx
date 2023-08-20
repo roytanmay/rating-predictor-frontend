@@ -8,6 +8,7 @@ const ContestPage = () => {
   const params = useParams();
 
   const [userId, setUserId] = useState("");
+  const [changed, setChanged] = useState(false);
 
   const words = params.contestName.split("-");
   const capitalizedContestName = words.map(
@@ -58,8 +59,8 @@ const ContestPage = () => {
         } else if (response.status === 200) {
           lcUsers.push(userId);
           localStorage.setItem("lc_users", JSON.stringify(lcUsers));
-
           notification["success"]({ message: "Friend Added", duration: 3 });
+          setChanged(!changed);
         }
         else{
             // console.log(data.status)
@@ -93,7 +94,7 @@ const ContestPage = () => {
           </form>
         </div>
       </div>
-      <FriendList contestName={params.contestName} />
+      <FriendList trigger={changed} contestName={params.contestName} />
     </div>
   );
 };
