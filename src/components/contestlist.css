@@ -67,7 +67,7 @@ tr:nth-child(odd) td {
 
 
 
-.loading-cell {
+/* .loading-cell {
   text-align: center;
   padding: 20px;
 }
@@ -84,4 +84,4 @@ tr:nth-child(odd) td {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
+} */
