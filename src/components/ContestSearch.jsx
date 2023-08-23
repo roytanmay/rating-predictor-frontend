@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 import "./contestSearch.css";
 
@@ -69,7 +70,10 @@ const ContestSearch = ({ data }) => {
 
   const handleClick = () => {
     if (!contestType || !contestNo) {
-      alert("Enter valid contest type and contest no");
+      notification["error"]({
+        message: "Enter valid contest type or contest no",
+        duration: 3,
+      });
       return;
     }
 
@@ -80,39 +84,38 @@ const ContestSearch = ({ data }) => {
   };
 
   return (
-    <div className="main-container">
-      <h2>Search Contest</h2>
-      <div className="dropdown-container">
-        <div className="dropdown">
-          <label htmlFor="contest-type">Contest Type:</label>
-          <select
-            id="contest-type"
-            value={contestType}
-            onChange={handleContestType}
-          >
-            <option value="">Contest Type</option>
-            <option className="dropdown" value="weekly">
-              Weekly Contest
-            </option>
-            <option className="dropdown" value="biweekly">
-              Biweekly Contest
-            </option>
-          </select>
-        </div>
-        <div className="dropdown">
-          <label htmlFor="contest-no">Contest No:</label>
-          <select id="contest-no" value={contestNo} onChange={handleContestNo}>
-            <option value="">Contest No</option>
-            {contestNumberDropDown()}
-          </select>
-        </div>
-        <div>
-          <button className="submit-button" onClick={handleClick}>
-            Search
-          </button>
-        </div>
+    // <div className="main-container">
+    <div className="dropdown-container  dropdown-enter dropdown-enter-active fade-in">
+      <div className="dropdown">
+        <label htmlFor="contest-type">Contest Type:</label>
+        <select
+          id="contest-type"
+          value={contestType}
+          onChange={handleContestType}
+        >
+          <option value="">Contest Type</option>
+          <option className="dropdown" value="weekly">
+            Weekly Contest
+          </option>
+          <option className="dropdown" value="biweekly">
+            Biweekly Contest
+          </option>
+        </select>
+      </div>
+      <div className="dropdown">
+        <label htmlFor="contest-no">Contest No:</label>
+        <select id="contest-no" value={contestNo} onChange={handleContestNo}>
+          <option value="">Contest No</option>
+          {contestNumberDropDown()}
+        </select>
+      </div>
+      <div>
+        <button className="submit-button" onClick={handleClick}>
+          Search
+        </button>
       </div>
     </div>
+    // </div>
   );
 };
 

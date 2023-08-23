@@ -8,12 +8,13 @@ const FriendsPage = () => {
 
   useEffect(() => {
     const friends = JSON.parse(localStorage.getItem("lc_users")) || [];
+    console.log(friends);
     setUsers(friends);
   }, []);
 
-  useEffect(() => {
-    setUsers(users);
-  }, [users]);
+  // useEffect(() => {
+  //   setUsers(users);
+  // }, [users]);
 
   const handleDelete = (id) => {
     if (users.length > 0) {
@@ -34,7 +35,7 @@ const FriendsPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="friends-container">
       {users.map((user, key) => {
         return (
           <UserDetails

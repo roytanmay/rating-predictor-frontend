@@ -1,0 +1,15 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.button-container button {
+  background-color: #415a77;
+  border-radius: 30px;
+  width: auto;
+  max-width: 180px;
+  padding: 15px;
+}
+  

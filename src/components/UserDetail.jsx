@@ -39,8 +39,8 @@ export default function UserDetails({ id, onDelete }) {
 
   useEffect(() => {
     axios
-      //   .get(`${process.env.NEXT_PUBLIC_LEETCODE_API_URL}/${id}`)
-      .get(`https://leetcode-stats-api.herokuapp.com/${id}`)
+        .get(`${process.env.REACT_APP_LEETCODE_API_URL}/${id}`)
+      // .get(`https://leetcode-stats-api.herokuapp.com/${id}`)
       .then((response) => {
         if (response.data.status === "success") {
           const submissions = response.data.submissionCalendar;
@@ -52,7 +52,7 @@ export default function UserDetails({ id, onDelete }) {
             Object.keys(submissions)[Object.keys(submissions).length - 1]
           );
 
-          console.log(response.data);
+          // console.log(response.data);
           setUserDetails({
             ...UserDetails,
             totalSolved: response.data.totalSolved,

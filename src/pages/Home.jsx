@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import ContestList from "../components/ContestList";
 import ContestSearch from "../components/ContestSearch";
 import Spinner from "../components/Spinner";
+import Tagline from "../components/Tagline";
+import "./home.css";
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -32,11 +34,19 @@ const Home = () => {
   );
 
   return (
-    <div>
-      
+    <>
+      <Tagline />
+      <div className="button-container">
+        <button
+          className="search-button"
+          onClick={() => setIsSearched(!isSearched)}
+        >
+          Search Contests
+        </button>
+      </div>
       {isSearched && <ContestSearch data={data} />}
       {contestList}
-    </div>
+    </>
   );
 };
 

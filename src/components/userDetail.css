@@ -45,11 +45,11 @@
 }
 .acceptanceRate {
   font-weight: 700;
-  color: rgb(150, 119, 169);
+  color: rgb(173, 141, 192);
   margin: 5px 0px;
 }
 .todaySubmissionCount {
-  color: rgb(128, 49, 0);
+  color: rgb(216, 100, 28);
   font-weight: 700;
   margin-top: 10px;
   font-size: 0.9rem;
