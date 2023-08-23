@@ -4,7 +4,7 @@ import "./navbar.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <h1>
         <Link to="/" className="title">
           <svg
@@ -34,7 +34,12 @@ const Navbar = () => {
           Leetcode Rating Predictor
         </Link>
       </h1>
-    </div>
+
+      <div className="nav-elements">
+        <Link className="nav-link" to="/friends">Friends</Link>
+        <Link className="nav-link" to="/about">About us</Link>
+      </div>
+    </nav>
   );
 };
 

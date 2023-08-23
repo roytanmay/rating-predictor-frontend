@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;600;700;800;900&display=swap");
+.userDetailsBox {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  margin: 12px 12px;
+  padding: 20px 20px 10px;
+  background-color: #4d5c70;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+.userIdDiv {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.userId {
+  font-weight: 700;
+  margin-bottom: 35px;
+  text-align: center;
+  /* color: rgb(38, 115, 222); */
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.userId:hover {
+  color: rgb(14, 64, 135);
+}
+.totalSolved {
+  font-weight: 700;
+}
+.easySolved {
+  color: #00b8a3;
+  font-weight: 700;
+  margin: 5px 0px;
+}
+.mediumSolved {
+  color: #ffc01e;
+  font-weight: 700;
+  margin: 5px 0px;
+}
+.hardSolved {
+  color: #ef4743;
+  font-weight: 700;
+  margin: 5px 0px;
+}
+.acceptanceRate {
+  font-weight: 700;
+  color: rgb(150, 119, 169);
+  margin: 5px 0px;
+}
+.todaySubmissionCount {
+  color: rgb(128, 49, 0);
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+.searchBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  font-family: "Work Sans", sans-serif;
+}
+.searchBox input {
+  padding: 6px 20px;
+  outline: 0;
+}
+.searchBox button {
+  padding: 8px 12px;
+  margin-left: 6px;
+  color: white;
+  font-family: "Work Sans", sans-serif;
+  background: rgb(7, 86, 155);
+  font-weight: 700;
+  border-radius: 3px;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+}
+.closeIcon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+}
+.noFriends {
+  color: rgb(204, 200, 200);
+  letter-spacing: 3px;
+  word-spacing: 10px;
+}
+.submissionCount {
+  font-size: 1.5rem;
+  color: red;
+  margin: 0px 6px 0px 0px;
+}
+.submissionTime {
+  font-size: 0.75rem;
+  color: rgb(151, 149, 149);
+  margin-left: 20px;
+}

@@ -90,7 +90,7 @@ const ContestSearch = ({ data }) => {
             value={contestType}
             onChange={handleContestType}
           >
-            <option value="">Select contest type</option>
+            <option value="">Contest Type</option>
             <option className="dropdown" value="weekly">
               Weekly Contest
             </option>
@@ -102,7 +102,7 @@ const ContestSearch = ({ data }) => {
         <div className="dropdown">
           <label htmlFor="contest-no">Contest No:</label>
           <select id="contest-no" value={contestNo} onChange={handleContestNo}>
-            <option value=""></option>
+            <option value="">Contest No</option>
             {contestNumberDropDown()}
           </select>
         </div>

@@ -1,9 +1,21 @@
 .navbar {
-  padding-left: 5rem;
-  padding-top: 1rem;
+  padding: 1rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .title {
+  text-decoration: none;
+  color: #f3f4f6;
+}
+
+.nav-elements {
+  display: flex;
+  gap: 5rem;
+}
+
+.nav-link {
   text-decoration: none;
   color: #f3f4f6;
 }

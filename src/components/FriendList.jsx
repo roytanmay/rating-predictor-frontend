@@ -58,7 +58,8 @@ const FriendList = ({ trigger, contestName }) => {
   const getUserDetail = async (users) => {
     try {
       const url = `${process.env.REACT_APP_BACKEND_URL}/user/getUsers`; // Corrected endpoint URL
-      const response = await fetch(url, {
+
+      fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,18 +68,22 @@ const FriendList = ({ trigger, contestName }) => {
           contest: contestName, // Assuming contestName is defined somewhere
           username: users, // Assuming users is defined somewhere
         }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setData(data);
-        console.log(data);
-        // Update your state or do something with the data
-      } else {
-        setData(data);
-        console.error("Error fetching user details. Status:", response.status);
-        // Handle error as needed
-      }
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          // if (data.length === 0) {
+          //   setData([]);
+          // } else {
+          //   setData(data);
+          // }
+          setData(data);
+          console.log(data);
+        })
+        .catch((err) => {
+          console.error("Error fetching user details:", err);
+        });
     } catch (error) {
       console.error("Error fetching user details:", error);
       // Handle error as needed
@@ -173,7 +178,22 @@ const FriendList = ({ trigger, contestName }) => {
   return (
     <div className="contest-table">
       <div className="table-container">
-        {data && data.length > 0 ? (
+        {users.length === 0 ? (
+          <h3 style={{ color: "white", textAlign: "center" }}>
+            You have no friends added
+          </h3>
+        ) : data.length === 0 ? (
+          <>
+            <Spinner />
+            <h3 style={{ color: "white", textAlign: "center" }}>
+              Please wait! It may take few seconds.
+            </h3>
+          </>
+        ) : !data[0] ? (
+          <h3 style={{ color: "white", textAlign: "center" }}>
+            No friend participated in this contest
+          </h3>
+        ) : (
           <table border="1">
             <thead>
               <tr>
@@ -188,92 +208,81 @@ const FriendList = ({ trigger, contestName }) => {
               </tr>
             </thead>
             <tbody>
-              {data && data.length > 0
-                ? data.map(
-                    (item, index) =>
-                      item && (
-                        <tr key={index}>
-                          <td>{(item && item.rank) || ""}</td>
-                          <td>
-                            <a
-                              style={{
-                                textDecoration: "none",
-                                color: "#f87171",
-                              }}
-                              href={`https://leetcode.com/${
-                                (item && item.username) || ""
-                              }`}
-                              target="_blank"
-                              onMouseEnter={() => handleMouseEnter(index)}
-                              onMouseLeave={() => handleMouseLeave(index)}
-                            >
-                              {(item && item.username) || ""}
-                            </a>
-                            {showDeleteArray[index] && (
-                              <span
-                                style={{
-                                  marginLeft: "8px",
-                                  cursor: "pointer",
-                                  color: "red",
-                                }}
-                                onClick={() => handleDelete(index)}
-                              >
-                                ❌
-                              </span>
-                            )}
-                          </td>
-                          <td>{(item && item.score) || ""}</td>
-                          <td>
-                            {(item && convertTimeformat(item.finish_time)) ||
-                              ""}
-                          </td>
-                          <td>
-                            {item && item.old_rating
-                              ? item.old_rating.toFixed(2)
-                              : ""}
-                          </td>
-                          <td
+              {data.map(
+                (item, index) =>
+                  item && (
+                    <tr key={index}>
+                      <td>{(item && item.rank) || ""}</td>
+                      <td>
+                        <a
+                          style={{
+                            textDecoration: "none",
+                            color: "#f87171",
+                          }}
+                          href={`https://leetcode.com/${
+                            (item && item.username) || ""
+                          }`}
+                          target="_blank"
+                          onMouseEnter={() => handleMouseEnter(index)}
+                          onMouseLeave={() => handleMouseLeave(index)}
+                        >
+                          {(item && item.username) || ""}
+                        </a>
+                        {showDeleteArray[index] && (
+                          <span
                             style={{
-                              color: getFontColor(
-                                (item && item.delta_rating) || 0
-                              ),
+                              marginLeft: "8px",
+                              cursor: "pointer",
+                              color: "red",
                             }}
+                            onClick={() => handleDelete(index)}
                           >
-                            {item && item.delta_rating
-                              ? item.delta_rating.toFixed(2)
-                              : ""}
-                          </td>
-                          <td>
-                            {item && item.new_rating
-                              ? item.new_rating.toFixed(2)
-                              : ""}
-                          </td>
-                          <td>
-                            <a
-                              href={
-                                item ? RankingRedirect(item && item.rank) : "#"
-                              }
-                              target="_blank"
-                              style={{
-                                textDecoration: "none",
-                                color: "#34d399",
-                              }}
-                            >
-                              {item && item.rank
-                                ? `Page - ${FormattedRankPage(item.rank)}`
-                                : ""}
-                            </a>
-                          </td>
-                        </tr>
-                      )
+                            ❌
+                          </span>
+                        )}
+                      </td>
+                      <td>{(item && item.score) || ""}</td>
+                      <td>
+                        {(item && convertTimeformat(item.finish_time)) || ""}
+                      </td>
+                      <td>
+                        {item && item.old_rating
+                          ? item.old_rating.toFixed(2)
+                          : ""}
+                      </td>
+                      <td
+                        style={{
+                          color: getFontColor((item && item.delta_rating) || 0),
+                        }}
+                      >
+                        {item && item.delta_rating
+                          ? item.delta_rating.toFixed(2)
+                          : ""}
+                      </td>
+                      <td>
+                        {item && item.new_rating
+                          ? item.new_rating.toFixed(2)
+                          : ""}
+                      </td>
+                      <td>
+                        <a
+                          href={item ? RankingRedirect(item && item.rank) : "#"}
+                          target="_blank"
+                          style={{
+                            textDecoration: "none",
+                            color: "#34d399",
+                          }}
+                        >
+                          {item && item.rank
+                            ? `Page - ${FormattedRankPage(item.rank)}`
+                            : ""}
+                        </a>
+                      </td>
+                    </tr>
                   )
-                : null}
+              )}
             </tbody>
           </table>
-        ) : users.length === 0 ? (
-          <h1 style={{ color: "white" }}>You have no friends added</h1>
-        ) : (
-          <Spinner />
         )}
       </div>
     </div>

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: "Work Sans", sans-serif;
+}
+
+.row {
+  display: flex;
+  gap: 2rem;
+}
+
+.row img {
+  height: 12px;
+  width: 12px;
+}
