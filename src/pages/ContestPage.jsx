@@ -76,8 +76,8 @@ const ContestPage = () => {
   return (
     <div>
       <div className="main-container">
-        <h1 className="contest-name">{formattedContestName}</h1>
-        <div className="search-container">
+        <h1 className="contest-name" style={{display: "flex",justifyContent: "center"}}>{formattedContestName}</h1>
+        {/* <div className="search-container">
           <form className="search-form" onSubmit={handleSubmit}>
             <input
               className="search-input"
@@ -92,7 +92,7 @@ const ContestPage = () => {
               Add Friend
             </button>
           </form>
-        </div>
+        </div> */}
       </div>
       <FriendList trigger={changed} contestName={params.contestName} />
     </div>

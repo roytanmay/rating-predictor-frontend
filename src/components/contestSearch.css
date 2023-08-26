@@ -77,3 +77,10 @@
 .submit-button:hover {
   background-color: #075985;
 }
+
+@media screen and (max-width: 800px) {
+  .dropdown-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

@@ -10,7 +10,8 @@ const Navbar = () => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 36 36"
-            style={{ width: "30px", height: "30px" }}
+            // style={{ width: "30px", height: "30px" }}
+            className="logo"
           >
             <path
               fill="#A0041E"

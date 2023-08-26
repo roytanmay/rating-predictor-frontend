@@ -9,52 +9,6 @@ const FriendList = ({ trigger, contestName }) => {
   const [data, setData] = useState([]);
   const [sortBy, setSortBy] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
-
-  const initialShowDeleteState = Array.from(
-    { length: users.length },
-    () => false
-  );
-  const [showDeleteArray, setShowDeleteArray] = useState(
-    initialShowDeleteState
-  );
-
-  const handleMouseEnter = (index) => {
-    const newArray = [...showDeleteArray];
-    newArray[index] = true;
-    setShowDeleteArray(newArray);
-  };
-
-  // useEffect(() => {
-
-  // }, [handleMouseEnter]);
-
-  const handleMouseLeave = (index) => {
-    const newArray = [...showDeleteArray];
-    setTimeout(() => {
-      newArray[index] = false;
-      setShowDeleteArray(newArray);
-    }, 2000);
-  };
-
-  const handleDelete = (index) => {
-    // Implement your delete logic here
-    // const lcUsers = JSON.parse(localStorage.getItem("lc_users")) || [];
-    // if(lcUsers.length>0){
-    //   const index = lcUsers.indexOf(index);
-
-    console.log(index);
-    if (index > -1) {
-      users.splice(index, 1);
-    }
-    localStorage.setItem("lc_users", JSON.stringify(users));
-    notification["success"]({
-      message: `Friend removed successfully`,
-      duration: 3,
-    });
-    setUsers(users);
-    // }
-  };
-
   const getUserDetail = async (users) => {
     try {
       const url = `${process.env.REACT_APP_BACKEND_URL}/user/getUsers`; // Corrected endpoint URL
@@ -223,23 +177,11 @@ const FriendList = ({ trigger, contestName }) => {
                             (item && item.username) || ""
                           }`}
                           target="_blank"
-                          onMouseEnter={() => handleMouseEnter(index)}
-                          onMouseLeave={() => handleMouseLeave(index)}
+    
                         >
                           {(item && item.username) || ""}
                         </a>
-                        {showDeleteArray[index] && (
-                          <span
-                            style={{
-                              marginLeft: "8px",
-                              cursor: "pointer",
-                              color: "red",
-                            }}
-                            onClick={() => handleDelete(index)}
-                          >
-                            ❌
-                          </span>
-                        )}
+                        
                       </td>
                       <td>{(item && item.score) || ""}</td>
                       <td>

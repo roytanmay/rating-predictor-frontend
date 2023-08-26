@@ -5,9 +5,10 @@
   height: 200px;
   margin: 12px 12px;
   padding: 20px 20px 10px;
-  background-color: #4d5c70;
+  background-color: #ccd8df;
   border-radius: 6px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  font-family: 'Poppins', sans-serif;
 }
 .userIdDiv {
   text-align: center;
@@ -18,7 +19,7 @@
   margin-bottom: 35px;
   text-align: center;
   /* color: rgb(38, 115, 222); */
-  color: white;
+  color: rgb(34, 57, 207);
   cursor: pointer;
   text-decoration: none;
 }
@@ -29,12 +30,12 @@
   font-weight: 700;
 }
 .easySolved {
-  color: #00b8a3;
+  color: #01ae9a;
   font-weight: 700;
   margin: 5px 0px;
 }
 .mediumSolved {
-  color: #ffc01e;
+  color: #ffa116;
   font-weight: 700;
   margin: 5px 0px;
 }
@@ -45,7 +46,7 @@
 }
 .acceptanceRate {
   font-weight: 700;
-  color: rgb(173, 141, 192);
+  color: rgb(162, 104, 196);
   margin: 5px 0px;
 }
 .todaySubmissionCount {
@@ -92,11 +93,11 @@
 }
 .submissionCount {
   font-size: 1.5rem;
-  color: red;
+  color: rgb(216, 100, 28);
   margin: 0px 6px 0px 0px;
 }
 .submissionTime {
   font-size: 0.75rem;
-  color: rgb(151, 149, 149);
+  color: rgb(97, 96, 96);
   margin-left: 20px;
 }

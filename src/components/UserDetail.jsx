@@ -6,6 +6,9 @@ import { FaRegWindowClose } from "react-icons/fa";
 export default function UserDetails({ id, onDelete }) {
   const [userDetails, setUserDetails] = useState({
     totalSolved: "",
+    totalEasy: "",
+    totalMedium: "",
+    totalHard: "",
     easySolved: "",
     mediumSolved: "",
     hardSolved: "",
@@ -57,8 +60,11 @@ export default function UserDetails({ id, onDelete }) {
             ...UserDetails,
             totalSolved: response.data.totalSolved,
             easySolved: response.data.easySolved,
+            totalEasy: response.data.totalEasy,
             mediumSolved: response.data.mediumSolved,
+            totalMedium: response.data.totalMedium,
             hardSolved: response.data.hardSolved,
+            totalHard: response.data.totalHard,
             acceptanceRate: response.data.acceptanceRate,
             latestSubmissionCount: latestSubmissionCount,
             latestSubmissionTime: latestSubmissionTime,
@@ -71,10 +77,11 @@ export default function UserDetails({ id, onDelete }) {
   }, []);
 
   return (
-    <>
+    <>  
       <div className="userDetailsBox">
         <FaRegWindowClose
           className="closeIcon"
+          size={22}
           onClick={() => {
             onDelete(id);
           }}
@@ -92,7 +99,7 @@ export default function UserDetails({ id, onDelete }) {
           Easy Solved: &emsp;
           {userDetails.easySolved && (
             <span>
-              {userDetails.easySolved}/{userDetails.totalSolved}
+              {userDetails.easySolved}/{userDetails.totalEasy}
             </span>
           )}
         </div>
@@ -100,7 +107,7 @@ export default function UserDetails({ id, onDelete }) {
           Medium Solved: &emsp;{" "}
           {userDetails.mediumSolved && (
             <span>
-              {userDetails.mediumSolved}/{userDetails.totalSolved}
+              {userDetails.mediumSolved}/{userDetails.totalMedium}
             </span>
           )}
         </div>
@@ -108,7 +115,7 @@ export default function UserDetails({ id, onDelete }) {
           Hard Solved: &emsp;{" "}
           {userDetails.hardSolved && (
             <span>
-              {userDetails.hardSolved}/{userDetails.totalSolved}
+              {userDetails.hardSolved}/{userDetails.totalHard}
             </span>
           )}
         </div>

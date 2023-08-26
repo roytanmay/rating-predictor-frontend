@@ -15,3 +15,56 @@
   height: 12px;
   width: 12px;
 }
+
+.search-friend-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 5rem;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 250px;
+}
+
+.search-button {
+  background-color: #f87171;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out; /* Add transition effect */
+}
+
+/* Change color on hover */
+.search-button:hover {
+  background-color: #e53e3e;
+}
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    flex-direction: column;
+  }
+
+  .search-input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .search-button {
+    margin-left: 0;
+  }
+}

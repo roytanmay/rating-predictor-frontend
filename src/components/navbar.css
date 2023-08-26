@@ -1,8 +1,10 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
 
 .navbar {
   padding: 1rem 5rem;
   display: flex;
+  gap: 3rem;
   align-items: center;
   justify-content: space-between;
   font-family: "Poppins", sans-serif;
@@ -13,12 +15,51 @@
   color: #f3f4f6;
 }
 
+.logo {
+  height: 20px;
+  width: 20px;
+}
+
 .nav-elements {
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
 }
 
 .nav-link {
   text-decoration: none;
   color: #f3f4f6;
+}
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .logo {
+    height: 20px;
+    width: 20px;
+  }
+
+  .nav-elements {
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-elements {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }

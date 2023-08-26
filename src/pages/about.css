@@ -1,0 +1,93 @@
+.about-us {
+    padding: 20px;
+   
+    color: white; /* White font color */
+    text-align: center;
+  }
+  
+  .developers-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .developer {
+    margin: 20px;
+    text-align: center;
+  }
+  
+  .project-description {
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .contact-form {
+    padding: 20px;
+    color: #f2f2f2;
+    text-align: center;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .contact-form button {
+    background-color: #f87171;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .developer {
+  background-color: #f3f4f6;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.developer h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.developer-link {
+  text-decoration: none;
+  color: #333; /* Change link color as desired */
+}
+
+.position {
+  margin-top: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.developer p {
+  margin-top: 10px;
+  line-height: 1.5;
+  color: #666;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f4f6;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  .contact-container {
+    padding: 15px;
+  }
+  .developer {
+    padding: 15px;
+  }
+}
