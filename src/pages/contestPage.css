@@ -7,5 +7,14 @@
 .contest-name {
   font-size: 30px;
   color: antiquewhite;
+  display: flex;
+  justify-content: center;
   
+}
+.contest-name a {
+  color: antiquewhite;
+  text-decoration: none;
+}
+.contest-name a:hover{
+  color: rgb(253, 213, 161);
 }

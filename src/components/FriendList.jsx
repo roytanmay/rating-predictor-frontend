@@ -3,7 +3,7 @@ import { notification } from "antd";
 import "./contestlist.css";
 import Spinner from "./Spinner";
 
-const FriendList = ({ trigger, contestName }) => {
+const FriendList = ({  contestName }) => {
   // const users = JSON.parse(localStorage.getItem("lc_users")) || [];
   const [users, setUsers] = useState([]);
   const [data, setData] = useState([]);
@@ -48,7 +48,7 @@ const FriendList = ({ trigger, contestName }) => {
     setUsers(JSON.parse(localStorage.getItem("lc_users")) || []);
     // getUserDetail(users);
     console.log(users);
-  }, [trigger]);
+  }, []);
 
   useEffect(() => {
     getUserDetail(users);
@@ -138,10 +138,11 @@ const FriendList = ({ trigger, contestName }) => {
           </h3>
         ) : data.length === 0 ? (
           <>
-            <Spinner />
+            
             <h3 style={{ color: "white", textAlign: "center" }}>
               Please wait! It may take few seconds.
             </h3>
+            <Spinner />
           </>
         ) : !data[0] ? (
           <h3 style={{ color: "white", textAlign: "center" }}>

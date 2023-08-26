@@ -4,6 +4,8 @@
   align-items: center;
   height: 10vh; /* Adjust as needed */
   /* background-color: #f8f8f8; Background color */
+  margin-top: 150px;
+  margin-bottom: 35%;
 }
 
 .loading-cell {
@@ -12,8 +14,8 @@
 }
 
 .loading-spinner {
-  width: 50px; /* Adjust the size */
-  height: 50px; /* Adjust the size */
+  width: 70px; /* Adjust the size */
+  height: 70px; /* Adjust the size */
   animation: spin 2s linear infinite, scale 1.5s ease-in-out infinite;
   position: relative;
 }

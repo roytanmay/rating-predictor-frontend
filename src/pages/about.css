@@ -1,6 +1,6 @@
 .about-us {
     padding: 20px;
-   
+    
     color: white; /* White font color */
     text-align: center;
   }
@@ -29,20 +29,27 @@
   
   .contact-form input,
   .contact-form textarea {
+    border-radius: 10px;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
   }
   
   .contact-form button {
+    border-radius: 15px;
     background-color: #f87171;
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
+    
+  }
+  .contact-form button:hover {
+    background-color: #f64c4c;
+    
   }
   .developer {
-  background-color: #f3f4f6;
+  background-color: #ccd8df;
   padding: 20px;
   border-radius: 10px;
   margin-bottom: 20px;
@@ -59,6 +66,7 @@
 }
 
 .position {
+  /* background-color: #ccd8df; */
   margin-top: 5px;
   font-weight: bold;
   color: #555;
@@ -67,14 +75,14 @@
 .developer p {
   margin-top: 10px;
   line-height: 1.5;
-  color: #666;
+  color: #3d3c3c;
 }
 
 .contact-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f4f6;
+  /* background-color: #f3f4f6; */
   padding: 20px;
   border-radius: 10px;
   margin-top: 20px;

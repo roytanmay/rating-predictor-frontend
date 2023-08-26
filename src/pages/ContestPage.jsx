@@ -6,77 +6,23 @@ import { notification } from "antd";
 
 const ContestPage = () => {
   const params = useParams();
-
-  const [userId, setUserId] = useState("");
-  const [changed, setChanged] = useState(false);
+  const contestName=params.contestName;
+  console.log(contestName);
 
   const words = params.contestName.split("-");
+
   const capitalizedContestName = words.map(
     (word) => word.charAt(0).toUpperCase() + word.slice(1)
   );
   const formattedContestName = capitalizedContestName.join(" ");
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      if (userId.trim().length === 0) {
-        alert("Enter valid username");
-        return;
-      }
-
-      const lcUsers = JSON.parse(localStorage.getItem("lc_users")) || [];
-      if (lcUsers.includes(userId)) {
-        
-        notification["success"]({
-          message: `Account is already added`,
-          duration: 3,
-        });
-      } else {
-        // console.log(userId);
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${userId}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: userId,
-          }),
-        });
-        
-        const data = await response.json();
-
-       // console.log(data);
-        if (response.status === 404) {
-           
-          notification["error"]({
-            message: "Enter valid username",
-            duration: 3,
-          });
-        } else if (response.status === 500) {
-        
-          notification["error"]({ message: data.message, duration: 3 });
-        } else if (response.status === 200) {
-          lcUsers.push(userId);
-          localStorage.setItem("lc_users", JSON.stringify(lcUsers));
-          notification["success"]({ message: "Friend Added", duration: 3 });
-          setChanged(!changed);
-        }
-        else{
-            // console.log(data.status)
-        }
-      }
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-
-    setUserId("");
-  };
+  
 
   return (
     <div>
       <div className="main-container">
-        <h1 className="contest-name" style={{display: "flex",justifyContent: "center"}}>{formattedContestName}</h1>
+        
+        <h1 className="contest-name" > <a href={`https://leetcode.com/contest/${contestName}`} target="_blank"> {formattedContestName} </a></h1>
         {/* <div className="search-container">
           <form className="search-form" onSubmit={handleSubmit}>
             <input
@@ -94,7 +40,7 @@ const ContestPage = () => {
           </form>
         </div> */}
       </div>
-      <FriendList trigger={changed} contestName={params.contestName} />
+      <FriendList contestName={params.contestName} />
     </div>
   );
 };
