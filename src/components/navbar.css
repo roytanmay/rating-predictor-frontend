@@ -1,4 +1,3 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
 
 .navbar {
@@ -65,5 +64,15 @@
   .nav-elements {
     flex-direction: row;
     justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .title {
+    font-size: 15px;
   }
 }
