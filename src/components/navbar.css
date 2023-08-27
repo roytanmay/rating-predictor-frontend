@@ -30,6 +30,10 @@
   color: #f3f4f6;
 }
 
+.nav-link:hover {
+  color: rgb(148, 254, 254);
+}
+
 @media screen and (max-width: 800px) {
   .navbar {
     padding: 1rem 2rem;

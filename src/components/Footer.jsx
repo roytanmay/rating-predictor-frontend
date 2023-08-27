@@ -5,10 +5,8 @@ const Footer = () => {
     <footer className="footer">
       <hr></hr>
       <div className=".copyright">
-        <p>
-          &copy; {new Date().getFullYear()} Leetcode Rating Predictor. All
-          rights reserved.
-        </p>
+        <p>{new Date().getFullYear()} Leetcode Rating Predictor.</p>
+        <p>Share and Enjoy.</p>
       </div>
     </footer>
   );

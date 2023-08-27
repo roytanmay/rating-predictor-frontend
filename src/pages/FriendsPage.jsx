@@ -5,7 +5,7 @@ import UserDetails from "../components/UserDetail";
 
 const FriendsPage = () => {
   const [users, setUsers] = useState([]);
-  const [friend,setFriend] = useState("");
+  const [friend, setFriend] = useState("");
 
   useEffect(() => {
     const friends = JSON.parse(localStorage.getItem("lc_users")) || [];
@@ -16,7 +16,7 @@ const FriendsPage = () => {
   // useEffect(() => {
   //   setUsers(users);
   // }, [users]);
-  const addFriend=async (event)=>{
+  const addFriend = async (event) => {
     event.preventDefault();
     try {
       if (friend.trim().length === 0) {
@@ -26,28 +26,34 @@ const FriendsPage = () => {
 
       const lcUsers = JSON.parse(localStorage.getItem("lc_users")) || [];
       if (lcUsers.includes(friend)) {
-        
         notification["success"]({
           message: `Account is already added`,
           duration: 3,
         });
+      } else if (lcUsers.length === 50) {
+        notification["info"]({
+          message: `You can have atmost 50 firends!`,
+          duration: 3,
+        });
       } else {
         // console.log(userId);
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${friend}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: friend,
-          }),
-        });
-        
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/user/${friend}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: friend,
+            }),
+          }
+        );
+
         const data = await response.json();
 
-       // console.log(data);
+        // console.log(data);
         if (response.status === 404) {
-           
           notification["error"]({
             message: "Enter valid username",
             duration: 3,
@@ -58,11 +64,11 @@ const FriendsPage = () => {
         } else if (response.status === 200) {
           lcUsers.push(friend);
           localStorage.setItem("lc_users", JSON.stringify(lcUsers));
+          setUsers(lcUsers);
           notification["success"]({ message: "Friend Added", duration: 3 });
           // setChanged(!changed);
-        }
-        else{
-            // console.log(data.status)
+        } else {
+          // console.log(data.status)
         }
       }
     } catch (error) {
@@ -70,58 +76,49 @@ const FriendsPage = () => {
     }
 
     setFriend("");
-  }
+  };
 
   const handleDelete = (id) => {
-    if (users.length > 0) {
-      const index = users.indexOf(id);
+    const updatedUsers = users.filter((user) => user !== id);
 
-      console.log(index);
-      if (index > -1) {
-        users.splice(index, 1);
-      }
-
-      localStorage.setItem("lc_users", JSON.stringify(users));
-      notification["success"]({
-        message: `Friend removed successfully`,
-        duration: 3,
-      });
-      setUsers(users);
-    }
+    localStorage.setItem("lc_users", JSON.stringify(updatedUsers));
+    setUsers(updatedUsers);
+    notification["success"]({
+      message: `Friend removed successfully`,
+      duration: 3,
+    });
   };
 
   return (
     <>
-    
-    <div className="search-friend-container">
-    <form className="search-form" onSubmit={addFriend}>
-      <input
-        className="search-input"
-        placeholder="username"
-        type="text"
-        value={friend}
-        onChange={(e) => {
-          setFriend(e.target.value);
-        }}
-      ></input>
-      <button type="submit" className="search-button">
-        Add Friend
-      </button>
-    </form>
-  </div> 
+      <div className="search-friend-container">
+        <form className="search-form" onSubmit={addFriend}>
+          <input
+            className="search-input"
+            placeholder="username"
+            type="text"
+            value={friend}
+            onChange={(e) => {
+              setFriend(e.target.value);
+            }}
+          ></input>
+          <button type="submit" className="search-button">
+            Add Friend
+          </button>
+        </form>
+      </div>
 
-
-    <div className="friends-container">
-      {users.map((user, key) => {
-        return (
-          <UserDetails
-            key={key}
-            id={user}
-            onDelete={(id) => handleDelete(id)}
-          />
-        );
-      })}
-    </div>
+      <div className="friends-container">
+        {users.map((user, key) => {
+          return (
+            <UserDetails
+              key={key}
+              id={user}
+              onDelete={(id) => handleDelete(id)}
+            />
+          );
+        })}
+      </div>
     </>
   );
 };

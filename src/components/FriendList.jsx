@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
-import { notification } from "antd";
 import "./contestlist.css";
 import Spinner from "./Spinner";
 
-const FriendList = ({  contestName }) => {
-  // const users = JSON.parse(localStorage.getItem("lc_users")) || [];
+const FriendList = ({ contestName }) => {
   const [users, setUsers] = useState([]);
   const [data, setData] = useState([]);
   const [sortBy, setSortBy] = useState(null);
   const [sortDirection, setSortDirection] = useState("asc");
   const getUserDetail = async (users) => {
     try {
-      const url = `${process.env.REACT_APP_BACKEND_URL}/user/getUsers`; // Corrected endpoint URL
+      const url = `${process.env.REACT_APP_BACKEND_URL}/user/getUsers`;
 
       fetch(url, {
         method: "POST",
@@ -19,19 +17,14 @@ const FriendList = ({  contestName }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          contest: contestName, // Assuming contestName is defined somewhere
-          username: users, // Assuming users is defined somewhere
+          contest: contestName,
+          username: users,
         }),
       })
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          // if (data.length === 0) {
-          //   setData([]);
-          // } else {
-          //   setData(data);
-          // }
           setData(data);
           console.log(data);
         })
@@ -40,13 +33,11 @@ const FriendList = ({  contestName }) => {
         });
     } catch (error) {
       console.error("Error fetching user details:", error);
-      // Handle error as needed
     }
   };
 
   useEffect(() => {
     setUsers(JSON.parse(localStorage.getItem("lc_users")) || []);
-    // getUserDetail(users);
     console.log(users);
   }, []);
 
@@ -55,14 +46,10 @@ const FriendList = ({  contestName }) => {
   }, [users]);
 
   const handleSort = (columnName) => {
-    // Toggle sort direction if clicking the same column
     const newSortDirection =
       sortBy === columnName && sortDirection === "asc" ? "desc" : "asc";
 
     const sortedData = [...data].sort((a, b) => {
-      // const aValue = a[columnName];
-      // const bValue = b[columnName];
-      // console.log(columnName);
       if (a === null || b === null) {
         return b === null;
       }
@@ -91,8 +78,8 @@ const FriendList = ({  contestName }) => {
   };
 
   const FormattedRankPage = (rank) => {
-    rank = (rank + 24) / 25;
-    return rank.toFixed(0);
+    rank = Math.ceil(rank / 25);
+    return rank;
   };
 
   const RankingRedirect = (rank) => {
@@ -138,7 +125,6 @@ const FriendList = ({  contestName }) => {
           </h3>
         ) : data.length === 0 ? (
           <>
-            
             <h3 style={{ color: "white", textAlign: "center" }}>
               Please wait! It may take few seconds.
             </h3>
@@ -178,11 +164,9 @@ const FriendList = ({  contestName }) => {
                             (item && item.username) || ""
                           }`}
                           target="_blank"
-    
                         >
                           {(item && item.username) || ""}
                         </a>
-                        
                       </td>
                       <td>{(item && item.score) || ""}</td>
                       <td>

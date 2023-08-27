@@ -1,54 +1,56 @@
 .about-us {
-    padding: 20px;
-    
-    color: white; /* White font color */
-    text-align: center;
-  }
-  
-  .developers-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .developer {
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .project-description {
-    font-style: italic;
-    text-align: center;
-  }
-  
-  .contact-form {
-    padding: 20px;
-    color: #f2f2f2;
-    text-align: center;
-  }
-  
-  .contact-form input,
-  .contact-form textarea {
-    border-radius: 10px;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-  }
-  
-  .contact-form button {
-    border-radius: 15px;
-    background-color: #f87171;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    
-  }
-  .contact-form button:hover {
-    background-color: #f64c4c;
-    
-  }
-  .developer {
+  padding: 20px;
+
+  color: white; /* White font color */
+  text-align: center;
+}
+
+.developers-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 20px;
+}
+
+.developer {
+  margin: 20px;
+  text-align: center;
+}
+
+.special-mention {
+  padding: 0.5rem 10rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.contact-form {
+  padding: 20px;
+  color: #f2f2f2;
+  text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.contact-form button {
+  border-radius: 15px;
+  background-color: #f87171;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.contact-form button:hover {
+  background-color: #f64c4c;
+}
+.developer {
   background-color: #ccd8df;
   padding: 20px;
   border-radius: 10px;
@@ -89,13 +91,36 @@
   flex-direction: column;
 }
 
-
 /* Media Query for smaller screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 780px) {
   .contact-container {
-    padding: 15px;
+    padding: 1.5rem;
+  }
+
+  .developers-container {
+    /* padding: 0.5rem; */
+    flex-direction: column;
   }
   .developer {
-    padding: 15px;
+    padding: 2rem;
+  }
+
+  .special-mention {
+    padding: 0.5rem 7rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .developers-container {
+    padding: 2rem 1rem;
+    gap: 1rem;
+  }
+
+  .developer {
+    padding: 1rem;
+  }
+
+  .special-mention {
+    padding: 0.5rem 3rem;
   }
 }

@@ -9,12 +9,17 @@
   color: antiquewhite;
   display: flex;
   justify-content: center;
-  
 }
 .contest-name a {
   color: antiquewhite;
   text-decoration: none;
 }
-.contest-name a:hover{
+.contest-name a:hover {
   color: rgb(253, 213, 161);
+}
+
+@media screen and (max-width: 500px) {
+  .contest-name {
+    font-size: 20px;
+  }
 }

@@ -4,8 +4,8 @@
   align-items: center;
   height: 10vh; /* Adjust as needed */
   /* background-color: #f8f8f8; Background color */
-  margin-top: 150px;
-  margin-bottom: 35%;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 
 .loading-cell {
@@ -44,7 +44,8 @@
 }
 
 @keyframes scale {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
