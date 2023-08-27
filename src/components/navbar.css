@@ -69,10 +69,10 @@
 
 @media screen and (max-width: 370px) {
   .navbar {
-    padding: 0.5rem;
+    padding: 3px;
   }
 
   .title {
-    font-size: 15px;
+    font-size: 18px;
   }
 }
