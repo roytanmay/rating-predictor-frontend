@@ -6,6 +6,7 @@ import UserDetails from "../components/UserDetail";
 const FriendsPage = () => {
   const [users, setUsers] = useState([]);
   const [friend, setFriend] = useState("");
+  const [buttonText, setButtonText] = useState("Add Friend");
 
   useEffect(() => {
     const friends = JSON.parse(localStorage.getItem("lc_users")) || [];
@@ -20,9 +21,14 @@ const FriendsPage = () => {
     event.preventDefault();
     try {
       if (friend.trim().length === 0) {
-        alert("Enter valid username");
+        notification["error"]({
+          message: `Enter valid username`,
+          duration: 3,
+        });
         return;
       }
+
+      setButtonText("Adding...");
 
       const lcUsers = JSON.parse(localStorage.getItem("lc_users")) || [];
       if (lcUsers.includes(friend)) {
@@ -76,6 +82,7 @@ const FriendsPage = () => {
     }
 
     setFriend("");
+    setButtonText("Add Friend");
   };
 
   const handleDelete = (id) => {
@@ -103,7 +110,7 @@ const FriendsPage = () => {
             }}
           ></input>
           <button type="submit" className="search-button">
-            Add Friend
+            {buttonText}
           </button>
         </form>
       </div>
