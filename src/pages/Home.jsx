@@ -10,7 +10,7 @@ const Home = () => {
   const [isSearched, setIsSearched] = useState(false);
 
   const getContests = async () => {
-    console.log(process.env.REACT_APP_BACKEND_URL);
+    // console.log(process.env.REACT_APP_BACKEND_URL);
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}`);
     const data = await response.json();
     setData(data);
@@ -23,7 +23,7 @@ const Home = () => {
     });
   }, []);
 
-  console.log(data);
+  // console.log(data);
 
   const contestList = data ? (
     <div>

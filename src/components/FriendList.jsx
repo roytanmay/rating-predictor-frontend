@@ -26,7 +26,7 @@ const FriendList = ({ contestName }) => {
         })
         .then((data) => {
           setData(data);
-          console.log(data);
+          // console.log(data);
         })
         .catch((err) => {
           console.error("Error fetching user details:", err);
@@ -38,7 +38,7 @@ const FriendList = ({ contestName }) => {
 
   useEffect(() => {
     setUsers(JSON.parse(localStorage.getItem("lc_users")) || []);
-    console.log(users);
+    // console.log(users);
   }, []);
 
   useEffect(() => {
